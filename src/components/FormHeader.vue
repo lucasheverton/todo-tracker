@@ -22,6 +22,7 @@ export default defineComponent({
   components: {
     Timing
   },
+  emits: ['aoSalvarTarefa'],
   data() {
     return {
       descricaoDaTarefa: ''
@@ -32,8 +33,11 @@ export default defineComponent({
     // que lá no $emit do componente Timing.vue passamos o segundo parâmetro tempoEmSegundos
     // que é o que vamos resgatar nessa função.
     finalizarTarefa(tempoDecorrido: number) : void {
-      console.log("Tempo da tarefa --->", tempoDecorrido)
-      console.log("Descrição --->", this.descricaoDaTarefa)
+      this.$emit('aoSalvarTarefa', {
+        duracaoEmSegundos: tempoDecorrido,
+        descricaoDaTarefa: this.descricaoDaTarefa
+      }        
+        );
       this.descricaoDaTarefa = '';
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <strong>{{ tempoDecorrido }}</strong>
+  <strong v-text="tempoDecorrido"></strong>
 </template>
 
 <script lang="ts">

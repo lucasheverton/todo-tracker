@@ -3,7 +3,7 @@
     <span class="icon">
       <i class="fas" :class="icone"></i>
     </span>
-    <span>{{ texto }}</span>
+    <span v-text="texto"></span>
   </button>
 </template>
 
