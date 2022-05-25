@@ -1,10 +1,10 @@
 <template>
-  <main class="columns is-gapless is-multiline">
+  <main class="columns is-gapless is-multiline" :class="{'dark-mode': darkModeOn}">
     <div class="column is-one-quarter">
-      <SideBar />
+      <SideBar @aoTemaAlterado="trocarTema"/>
     </div>
 
-    <div class="column is-three-quarter">
+    <div class="column is-three-quarter content">
       <FormHeader @aoSalvarTarefa="salvarTarefa" />
       <div class="list">
         <!-- Vamos passa a prop "tarefa" para o componente filho com as informações de descricao e tempo em segundos -->
@@ -36,12 +36,16 @@ export default defineComponent({
   },
   data() {
     return {
-      tarefas: [] as VTask[]
+      tarefas: [] as VTask[],
+      darkModeOn: false
     }
   },
   methods: {
     salvarTarefa(tarefa: VTask) {
       this.tarefas.push(tarefa);
+    },
+    trocarTema(darkModeOn : boolean) {
+      this.darkModeOn = darkModeOn;
     }
   },
   computed: {
@@ -57,7 +61,17 @@ export default defineComponent({
     margin: 1em;
   }
 
-  .list div {
-    background: #ffe6c6;
+  main {
+    --bg-primary: #fff;
+    --text-primary: #000;
+  }
+
+  main.dark-mode {
+    --bg-primary: #2b2d42;
+    --text-primary: #ddd;
+  }
+
+  .content {
+    background-color: var(--bg-primary);
   }
 </style>

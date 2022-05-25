@@ -1,5 +1,5 @@
 <template>
-  <strong v-text="tempoDecorrido"></strong>
+  <strong class="display" v-text="tempoDecorrido"></strong>
 </template>
 
 <script lang="ts">
@@ -25,5 +25,8 @@ export default defineComponent({
 </script>
 
 <style>
-
+  .display {
+    background: var(--bg--primary);
+    color: var(--text-primary);
+  }
 </style>
